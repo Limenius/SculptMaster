@@ -3,41 +3,61 @@ var polygonBoolean = require('2d-polygon-boolean');
 import colors from './colors';
 
 export default class Polygon {
-    constructor(offset, points) {
+    constructor(position, points, options) {
 
         // set the line style to have a width of 5 and set the color to red
 
-        var [offsetX, offsetY] = offset;
+        var [positionX, positionY] = position;
+        this.positionX = positionX;
+        this.positionY = positionY;
         this.points = [];
-        this.points.push([offsetX, offsetY]);
 
         _.each(points, ([pointX, pointY]) => {
-            var x = offsetX + pointX;
-            var y = offsetY + pointY;
-            this.points.push([x, y]);
+            this.points.push([pointX, pointY]);
         });
+
+        this.options = _.defaults(options, {
+            fillColor: colors.primary,
+            fillAlpha: 1,
+            center: [0, 0],
+        })
         this.render();
     }
 
     render() {
         this.graphics = new PIXI.Graphics();
-        this.graphics.beginFill(colors.primary);
+        this.graphics.position.x = this.positionX;
+        this.graphics.position.y = this.positionY;
+
+        this.graphics.beginFill(this.options.fillColor, this.options.fillAlpha);
         this.graphics.lineStyle(5, colors.secondary);
-        var [offsetX, offsetY] = this.points[0];
-        this.graphics.moveTo(offsetX, offsetY);
+        var [centerX, centerY] = this.options.center;
+        this.graphics.moveTo(this.points[0][0] - centerX, this.points[0][1]- centerY);
         for (var i = 1; i < this.points.length; i++) {
             var [pointX, pointY] = this.points[i];
-            this.graphics.lineTo(pointX, pointY);
+            this.graphics.lineTo(pointX - centerX, pointY - centerY);
         }
     }
 
+    moveTo([x, y]) {
+        this.graphics.position.x = x;
+        this.graphics.position.y = y;
+    }
+
     subtract(clip) {
-        this.points = polygonBoolean(this.points, clip.points, 'not')[0];
+        var absoluteClipPoints = clip.points.map(([x, y]) => {
+            return [x + clip.positionX, y + clip.positionY];
+
+        });
+        var absolutePoints = this.points.map(([x, y]) => {
+            return [x + this.positionX, y + this.positionY];
+
+        });
+        this.points = polygonBoolean(absolutePoints, absoluteClipPoints, 'not')[0];
         this.render();
     }
 
     getGraphics() {
-        console.log(this.points);
         return this.graphics;
     }
 }

@@ -7,10 +7,15 @@ var webpack = require('webpack')
 
 module.exports = {
     devtool: 'eval-source-map',
-    entry: './src/app.js',
+    entry: { 
+            app: './src/app.js',
+            vendor: [
+                'pixi.js',
+                'lodash',
+            ]},
     output: {
         path: __dirname,
-        filename: 'web/bundle.js'
+        filename: 'web/js/bundle.js'
     },
     module: {
 
@@ -75,7 +80,13 @@ module.exports = {
     plugins: [
         new webpack.ProvidePlugin({
             _: 'lodash'
-        })
+        }),
+        new webpack.optimize.CommonsChunkPlugin({
+            name: 'vendor',
+            chunks: ['app'],
+            filename: 'web/js/vendor.js',
+            minChunks: Infinity
+        }),
     ]
 
 }
