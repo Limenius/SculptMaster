@@ -4,18 +4,20 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha --compilers js:babel-register --recursive 'src/__tests__/*' --require src/__tests__/setup.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "2d-polygon-boolean": "^1.0.1",
     "babel-loader": "^6.2.4",
     "bootstrap": "^3.3.6",
     "bootstrap-sass": "^3.3.6",
-    "brfs": "^1.4.1",
+    "expect": "^1.16.0",
+    "jquery": "^2.2.3",
+    "js-clipper": "^1.0.1",
     "json-loader": "^0.5.4",
     "lodash": "^4.11.1",
+    "mocha": "^2.4.5",
     "pixi.js": "^3.0.8",
     "transform-loader": "^0.2.3",
     "webpack": "^1.12.9"

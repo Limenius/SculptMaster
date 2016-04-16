@@ -18,10 +18,20 @@ class Prakoto {
         this.gameContainer = new PIXI.Container();
         // add the renderer view element to the DOM
         document.body.appendChild(this.renderer.view);
-        this.tool = new Polygon([0, 0], [[0, 0], [50, 0], [50, 50], [0, 50]], {
+        this.tool = new Polygon([0, 0], [[0, 0], [0, 50], [50, 50], [50, 0]], {
             fill : colors.primary,
             fillAlpha : 0.5,
-            center: [25, 25],
+            center: [0, 0],
+        });
+        this.setUpEvents();
+    }
+
+    setUpEvents() {
+        this.renderer.view.addEventListener('click', event => {
+            var x = event.pageX - $(this.renderer.view).offset().left;
+            var y = event.pageY - $(this.renderer.view).offset().top;
+            console.log('subtract');
+            this.shape.subtract(this.tool);
         });
     }
 
@@ -44,10 +54,10 @@ class Prakoto {
     onLoad() {
         this.renderer.backgroundColor = colors.background;
 
-        var polygon = new Polygon([100, 100], [[0, 0], [100, 0], [100, 100], [0, 100]]);
+        this.shape = new Polygon([0, 0], [[0, 0], [0, 100], [100, 100], [100, 0]]);
         //var polygon2 = new Polygon([150, 150], [[0, 0], [150, 0], [150, 150], [0, 150]]);
         //polygon.subtract(polygon2);
-        this.gameContainer.addChild(polygon.getGraphics());
+        this.gameContainer.addChild(this.shape.getGraphics());
         this.gameContainer.addChild(this.tool.getGraphics());
     }
 }

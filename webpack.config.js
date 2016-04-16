@@ -12,6 +12,7 @@ module.exports = {
             vendor: [
                 'pixi.js',
                 'lodash',
+                'paper'
             ]},
     output: {
         path: __dirname,
@@ -79,7 +80,8 @@ module.exports = {
     },
     plugins: [
         new webpack.ProvidePlugin({
-            _: 'lodash'
+            _: 'lodash',
+            $: 'jQuery'
         }),
         new webpack.optimize.CommonsChunkPlugin({
             name: 'vendor',

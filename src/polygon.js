@@ -1,6 +1,6 @@
 var PIXI = require('pixi.js');
-var polygonBoolean = require('2d-polygon-boolean');
 import colors from './colors';
+var ClipperLib = require('js-clipper');
 
 export default class Polygon {
     constructor(position, points, options) {
@@ -21,11 +21,12 @@ export default class Polygon {
             fillAlpha: 1,
             center: [0, 0],
         })
+        this.graphics = new PIXI.Graphics();
         this.render();
     }
 
     render() {
-        this.graphics = new PIXI.Graphics();
+        this.graphics.clear();
         this.graphics.position.x = this.positionX;
         this.graphics.position.y = this.positionY;
 
@@ -40,20 +41,33 @@ export default class Polygon {
     }
 
     moveTo([x, y]) {
+        this.positionX = x;
+        this.positionY = y;
         this.graphics.position.x = x;
         this.graphics.position.y = y;
     }
 
     subtract(clip) {
         var absoluteClipPoints = clip.points.map(([x, y]) => {
-            return [x + clip.positionX, y + clip.positionY];
+            return {X: x + clip.positionX, Y: y + clip.positionY};
 
         });
         var absolutePoints = this.points.map(([x, y]) => {
-            return [x + this.positionX, y + this.positionY];
-
+            return {X: x, Y: y};
         });
-        this.points = polygonBoolean(absolutePoints, absoluteClipPoints, 'not')[0];
+        var clipper = new ClipperLib.Clipper();
+
+        clipper.AddPaths([absolutePoints], ClipperLib.PolyType.ptSubject, true);
+        clipper.AddPaths([absoluteClipPoints], ClipperLib.PolyType.ptClip, true);
+        var cliptype = ClipperLib.ClipType.ctDifference;
+        var polyfilltype = ClipperLib.PolyFillType.pftPositive;
+        var result = new ClipperLib.Paths();
+        clipper.Execute(cliptype, result);
+
+        var processedResult = result[0].map((point) => {
+            return [point.X, point.Y];
+        });
+        this.points = processedResult;
         this.render();
     }
 
