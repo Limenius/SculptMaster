@@ -6,6 +6,7 @@ var webpack = require('webpack')
 // webpack app.js bundle.js
 
 module.exports = {
+    devtool: 'eval-source-map',
     entry: './src/app.js',
     output: {
         path: __dirname,
@@ -70,5 +71,11 @@ module.exports = {
             }
         ]
 
-    }
+    },
+    plugins: [
+        new webpack.ProvidePlugin({
+            _: 'lodash'
+        })
+    ]
+
 }
