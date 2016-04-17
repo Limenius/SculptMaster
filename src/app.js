@@ -3,6 +3,8 @@ var PIXI = require('pixi.js')
 import Polygon from './polygon';
 import colors from './colors';
 import levels from './levels';
+console.log(levels);
+console.log(levels.length);
 
 
 window.onload = function ()
@@ -35,6 +37,8 @@ class Prakoto {
         this.shape = new Polygon(level.initialShape.position, level.initialShape.points);
         this.phase = 0;
         this.initTime = new Date();
+        this.gameContainer.addChildAt(this.shape.getGraphics(), 0);
+        this.gameContainer.addChild(this.mold.getGraphics());
         this.setupPhase();
     }
 
@@ -81,11 +85,11 @@ class Prakoto {
         var phase = level.phases[this.phase];
         if (time >= phase.time) {
             if (this.phase == level.phases.length - 1) {
-                console.log(this.shape.compare(this.mold));
                 if (this.level == levels.length - 1) {
-                    console.log('end game');
+                    //console.log('end game');
                 } else {
                     this.level ++;
+                    console.log('new level');
                     this.setupLevel();
                 }
             } else {
@@ -105,8 +109,6 @@ class Prakoto {
 
     onLoad() {
         this.renderer.backgroundColor = colors.background;
-        this.gameContainer.addChildAt(this.shape.getGraphics(), 0);
-        this.gameContainer.addChild(this.mold.getGraphics());
         this.chrono = new PIXI.Text('', {font : '24px Arial', fill : 0xff1010, align : 'right'});
         this.chrono.x = 400;
         this.chrono.y = 400;
