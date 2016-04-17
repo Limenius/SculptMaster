@@ -11,7 +11,7 @@ class LevelPresentation {
     }
 
     render() {
-        var text = new PIXI.Text('This is a pixi text',{font : '24px Arial', fill : 0xff1010, align : 'center'});
+        var text = new PIXI.Text('This is a pixi text',{font : '24px Josefin Sans', fill : 0xFFFFFF, align : 'center'});
         text.position.x = 300;
         text.position.y = 10;
         this.container.addChild(text);
@@ -51,7 +51,7 @@ class LevelPresentation {
                     break;
             }
 
-            var text = new PIXI.Text(insideText,{font : '24px Arial', fill : 0x101010, align : 'center'});
+            var text = new PIXI.Text(insideText,{font : '24px Josefin Sans', fill : 0x101010, align : 'center'});
             text.position.x = x - centerX /2;
             text.position.y = y - centerY /2;
 

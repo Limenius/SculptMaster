@@ -1,9 +1,10 @@
-//require('./styles/style.scss');
+require('./styles/style.scss');
 var PIXI = require('pixi.js')
 import Polygon from './polygon';
 import colors from './colors';
 import levels from './levels';
 import LevelPresentation from './levelPresentation';
+import EndGame from './endGame';
 import {initSector} from './sector';
 import Sound from './sound';
 
@@ -19,11 +20,22 @@ class Prakoto {
         this.renderer = PIXI.autoDetectRenderer(800, 600, {antialias: true});
         // create an empty container
         this.gameContainer = new PIXI.Container();
+        //var colorMatrix = [
+        //    1, 0, 0, 0,
+        //    0, 1, 0, 0,
+        //    0, 0, 1, 0,
+        //    0, 0, 0, 1
+        //];
+        //var filter = new PIXI.filters.ColorMatrixFilter();
+        ////        filter.technicolor(50);
+        ////filter.matrix = colorMatrix;
+        //this.gameContainer.filters = [filter];
         // add the renderer view element to the DOM
-        document.body.appendChild(this.renderer.view);
+        document.getElementById('game-container').appendChild(this.renderer.view);
         this.level = 0;
         this.presentLevel();
         this.setUpEvents();
+        this.mouseVisible = false;
     }
 
     setupLevel() {
@@ -56,7 +68,6 @@ class Prakoto {
             fillAlpha : 0.5,
             center: phase.center,
         });
-        this.gameContainer.addChild(this.tool.getGraphics());
     }
 
     setUpEvents() {
@@ -78,6 +89,13 @@ class Prakoto {
                 this.sound = new Sound();
             });
 
+    }
+
+    setupEndGame() {
+        this.gameContainer.removeChildren();
+        this.state = 'endGame';
+        this.endGame = new EndGame();
+        this.gameContainer.addChild(this.endGame.getContainer());
     }
 
     presentLevel() {
@@ -163,7 +181,8 @@ class Prakoto {
                     this.sound.play('fail');
                 }
                 if (this.level == levels.length - 1) {
-                    this.state = 'endGame';
+                    this.setupEndGame();
+
                 } else {
                     this.level ++;
                     this.presentLevel();
@@ -176,6 +195,10 @@ class Prakoto {
     }
 
     renderMouse() {
+        if (!this.mouseVisible) {
+            this.mouseVisible = true;
+            this.gameContainer.addChild(this.tool.getGraphics());
+        }
         var x = this.renderer.plugins.interaction.mouse.global.x;
         var y = this.renderer.plugins.interaction.mouse.global.y;
         x = x - x % 25;
