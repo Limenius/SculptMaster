@@ -76,7 +76,7 @@ const levels = [
                 time: 5,
                 // square
                 tool: [[0, 0], [0, 50], [50, 50], [50, 0]],
-                center: [50, 25],
+                center: [25, 25],
                 type: 'subtract',
                 color: colors.tertiary,
             },
@@ -120,7 +120,7 @@ const levels = [
         },
         phases: [
             {
-                time: 4,
+                time: 5,
                 // half triangle up right
                 tool: [[0, 0], [0, 50], [50, 50]],
                 center: [25, 25],
@@ -128,7 +128,7 @@ const levels = [
                 color: colors.highlight,
             },
             {
-                time: 4,
+                time: 5,
                 // half triangle up left
                 tool: [[0, 50], [50, 50], [50, 0]],
                 center: [25, 25],
@@ -136,7 +136,7 @@ const levels = [
                 color: colors.secondary,
             },
             {
-                time: 4,
+                time: 5,
                 // square
                 tool: [[0, 0], [0, 50], [50, 50], [50, 0]],
                 center: [25, 25],

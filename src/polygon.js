@@ -43,7 +43,7 @@ export default class Polygon {
         this.positionX = x;
         this.positionY = y;
         this.graphics.position.x = x - this.options.center[0];
-        this.graphics.position.y = y - this.options.center[0];
+        this.graphics.position.y = y - this.options.center[1];
     }
 
     modify(clip, type) {
