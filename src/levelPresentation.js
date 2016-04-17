@@ -11,9 +11,10 @@ class LevelPresentation {
     }
 
     render() {
-        var text = new PIXI.Text('This is a pixi text',{font : '24px Josefin Sans', fill : 0xFFFFFF, align : 'center'});
-        text.position.x = 300 - text.textWidth / 2;
-        text.position.y = 10;
+        var text = new PIXI.Text(this.level.title,{font : '48px Josefin Sans', fill : 0xFFFFFF, align : 'center'});
+        console.log(text);
+        text.position.x = 400 - text.width / 2;
+        text.position.y = 20;
         this.container.addChild(text);
         this.renderTimer();
         this.renderTools();
@@ -51,9 +52,9 @@ class LevelPresentation {
                     break;
             }
 
-            var text = new PIXI.Text(insideText,{font : '24px Josefin Sans', fill : 0x101010, align : 'center'});
-            text.position.x = x - centerX /2 - text.textWidth / 2;
-            text.position.y = y - centerY /2;
+            var text = new PIXI.Text(insideText,{font : '64px Josefin Sans', fill : 0x101010, align : 'center'});
+            text.position.x = x - text.width / 2;
+            text.position.y = y - text.height / 2;
 
 
             this.container.addChild(tool.getGraphics());
