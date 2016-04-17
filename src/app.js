@@ -5,6 +5,7 @@ import colors from './colors';
 import levels from './levels';
 import LevelPresentation from './levelPresentation';
 import {initSector} from './sector';
+import Sound from './sound';
 
 window.onload = function ()
 {
@@ -44,6 +45,7 @@ class Prakoto {
 
     setupPhase() {
         var phase = levels[this.level].phases[this.phase];
+        this.sound.play('change');
         this.initTime = new Date();
         if (this.tool) {
             this.tool.graphics.clear();
@@ -61,15 +63,25 @@ class Prakoto {
         this.renderer.view.addEventListener('click', event => {
             var x = event.pageX - $(this.renderer.view).offset().left;
             var y = event.pageY - $(this.renderer.view).offset().top;
-            this.shape.modify(this.tool, levels[this.level].phases[this.phase].type);
+            var type =levels[this.level].phases[this.phase].type;
+            this.shape.modify(this.tool, type);
+            this.sound.play(type);
         });
     }
 
     preload() {
-        this.onLoad();
+        var sprites = {};
+        var loader = PIXI.loader
+        .add('add','/sound/add.mp3')
+            .load((loader, resources) => {
+                this.onLoad();
+                this.sound = new Sound();
+            });
+
     }
 
     presentLevel() {
+        this.gameContainer.removeChildren();
         this.initTime = new Date();
         this.state = 'levelPresentation';
         this.presentation = new LevelPresentation(levels[this.level]);
@@ -94,6 +106,8 @@ class Prakoto {
                 this.renderMouse();
                 this.renderTimer();
                 this.checkEnd();
+            break;
+            case 'endGame':
             break;
         }
         this.renderer.render(this.gameContainer);
@@ -142,12 +156,17 @@ class Prakoto {
         var phase = level.phases[this.phase];
         if (this.time >= phase.time) {
             if (this.phase == level.phases.length - 1) {
+                console.log(this.shape.compare(this.mold));
+                if (this.shape.compare(this.tool)) {
+                    this.sound.play('success');
+                } else {
+                    this.sound.play('fail');
+                }
                 if (this.level == levels.length - 1) {
-                    //console.log('end game');
+                    this.state = 'endGame';
                 } else {
                     this.level ++;
-                    console.log('new level');
-                    this.setupLevel();
+                    this.presentLevel();
                 }
             } else {
                 this.phase ++;
