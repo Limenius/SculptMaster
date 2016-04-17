@@ -81,7 +81,7 @@ module.exports = {
     plugins: [
         new webpack.ProvidePlugin({
             _: 'lodash',
-            $: 'jQuery'
+            $: 'jquery'
         }),
         new webpack.optimize.CommonsChunkPlugin({
             name: 'vendor',
