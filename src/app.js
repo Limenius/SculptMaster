@@ -3,9 +3,6 @@ var PIXI = require('pixi.js')
 import Polygon from './polygon';
 import colors from './colors';
 import levels from './levels';
-console.log(levels);
-console.log(levels.length);
-
 
 window.onload = function ()
 {
@@ -34,7 +31,7 @@ class Prakoto {
             fillAlpha : 1,
             center: [0, 0],
         });
-        this.shape = new Polygon(level.initialShape.position, level.initialShape.points);
+        this.shape = new Polygon(level.initialShape.position, level.initialShape.points, { fillColor: level.initialShape.color });
         this.phase = 0;
         this.initTime = new Date();
         this.gameContainer.addChildAt(this.shape.getGraphics(), 0);
@@ -50,7 +47,7 @@ class Prakoto {
             this.gameContainer.removeChild(this.tool);
         }
         this.tool = new Polygon([0, 0], phase.tool, {
-            fillColor : colors.primary,
+            fillColor : phase.color,
             fillAlpha : 0.5,
             center: phase.center,
         });
@@ -72,18 +69,63 @@ class Prakoto {
     animate() {
         this.renderMouse();
         this.renderTimer();
+        this.checkEnd();
         this.renderer.render(this.gameContainer);
         requestAnimationFrame(this.animate.bind(this));
         return this;
     }
 
     renderTimer() {
+
         var now = new Date();
-        var time = Math.floor((now.getTime() - this.initTime.getTime() )/1000);
-        this.chrono.text = (Math.floor((now.getTime() - this.initTime.getTime() )/1000));
+        this.time = (now.getTime() - this.initTime.getTime() )/1000;
+
+        var initSector = (color) => {
+            var sector = new PIXI.Graphics();
+            sector.clear();
+            sector.beginFill(color);
+            sector.position.x = 600;
+            sector.position.y = 100;
+            sector.moveTo(0, 0);
+            this.gameContainer.addChild(sector);
+            this.sectors.push(sector);
+            return sector;
+        }
+
+        _.each(this.sectors, (sector) => {
+            this.gameContainer.removeChild(sector);
+        });
+
+        this.sectors = [];
+
+
+        var level = levels[this.level];
+
+        var angle = 0;
+        var offsetAngle = - Math.PI /2;
+
+        var levelTime = _.reduce(level.phases, function(sum, phase) {
+            return sum + phase.time;
+        }, 0);
+
+        var pastTime = 0;
+        for (var i = 0; i < this.phase; i++) {
+
+            var phase = level.phases[i];
+            var initAngle = angle;
+            angle += ((pastTime + phase.time)/levelTime) * 2 * Math.PI;
+            pastTime += phase.time;
+            initSector(phase.color).arc(0, 0, 70, offsetAngle + initAngle, offsetAngle + angle);
+        }
+        var finalAngle = ((this.time + pastTime)/levelTime) * 2 * Math.PI;
+
+        initSector(level.phases[this.phase].color).arc(0, 0, 70, offsetAngle + angle, offsetAngle + finalAngle);
+    }
+
+    checkEnd() {
         var level = levels[this.level];
         var phase = level.phases[this.phase];
-        if (time >= phase.time) {
+        if (this.time >= phase.time) {
             if (this.phase == level.phases.length - 1) {
                 if (this.level == levels.length - 1) {
                     //console.log('end game');
@@ -109,9 +151,6 @@ class Prakoto {
 
     onLoad() {
         this.renderer.backgroundColor = colors.background;
-        this.chrono = new PIXI.Text('', {font : '24px Arial', fill : 0xff1010, align : 'right'});
-        this.chrono.x = 400;
-        this.chrono.y = 400;
-        this.gameContainer.addChild(this.chrono);
+
     }
 }

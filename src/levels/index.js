@@ -1,8 +1,12 @@
+import colors from '../colors';
+
 const levels = [
     {
+        background: colors.background,
         initialShape: {
             points: [[0, 0], [0, 100], [100, 100], [100, 0]],
-            position: [100, 100]
+            position: [100, 100],
+            color: colors.primary
         },
         phases: [
             {
@@ -10,12 +14,14 @@ const levels = [
                 tool: [[0, 0], [0, 50], [50, 50], [50, 0]],
                 center: [25, 25],
                 type: 'add',
+                color: colors.highlight,
             },
             {
-                time: 5,
+                time: 7,
                 tool: [[0, 0], [0, 50], [50, 50], [50, 0]],
                 center: [25, 25],
                 type: 'subtract',
+                color: colors.secondary,
             },
         ],
         goal: [[0, 0], [0, 100], [50, 100], [50, 150], [100, 150], [100, 50], [50, 50], [50, 0]],
@@ -32,12 +38,14 @@ const levels = [
                 tool: [[0, 0], [0, 50], [50, 50], [50, 0]],
                 center: [25, 25],
                 type: 'add',
+                color: colors.highlight,
             },
             {
                 time: 5,
                 tool: [[0, 0], [0, 50], [50, 50], [50, 0]],
                 center: [25, 25],
                 type: 'subtract',
+                color: colors.tertiary,
             },
         ],
         goal: [[0, 0], [0, 100], [50, 100], [50, 150], [100, 150], [100, 50], [50, 50], [50, 0]],
