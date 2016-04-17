@@ -3,6 +3,8 @@ var PIXI = require('pixi.js')
 import Polygon from './polygon';
 import colors from './colors';
 import levels from './levels';
+import LevelPresentation from './levelPresentation';
+import {initSector} from './sector';
 
 window.onload = function ()
 {
@@ -13,17 +15,18 @@ window.onload = function ()
 
 class Prakoto {
     constructor() {
-        this.renderer = PIXI.autoDetectRenderer(800, 600);
+        this.renderer = PIXI.autoDetectRenderer(800, 600, {antialias: true});
         // create an empty container
         this.gameContainer = new PIXI.Container();
         // add the renderer view element to the DOM
         document.body.appendChild(this.renderer.view);
         this.level = 0;
-        this.setupLevel();
+        this.presentLevel();
         this.setUpEvents();
     }
 
     setupLevel() {
+        this.state = 'inLevel';
         this.gameContainer.removeChildren();
         var level = levels[this.level];
         this.mold = new Polygon([400, 200], level.goal, {
@@ -66,31 +69,39 @@ class Prakoto {
         this.onLoad();
     }
 
+    presentLevel() {
+        this.initTime = new Date();
+        this.state = 'levelPresentation';
+        this.presentation = new LevelPresentation(levels[this.level]);
+        this.gameContainer.addChild(this.presentation.getContainer());
+    }
+
+    renderLevelPresentation() {
+        if (this.time > 5) {
+            this.gameContainer.removeChild(this.presentation.getContainer());
+            this.setupLevel();
+        }
+    }
+
     animate() {
-        this.renderMouse();
-        this.renderTimer();
-        this.checkEnd();
+        var now = new Date();
+        this.time = (now.getTime() - this.initTime.getTime() )/1000;
+        switch (this.state) {
+            case 'levelPresentation':
+                this.renderLevelPresentation();
+            break;
+            case 'inLevel':
+                this.renderMouse();
+                this.renderTimer();
+                this.checkEnd();
+            break;
+        }
         this.renderer.render(this.gameContainer);
         requestAnimationFrame(this.animate.bind(this));
         return this;
     }
 
     renderTimer() {
-
-        var now = new Date();
-        this.time = (now.getTime() - this.initTime.getTime() )/1000;
-
-        var initSector = (color) => {
-            var sector = new PIXI.Graphics();
-            sector.clear();
-            sector.beginFill(color);
-            sector.position.x = 600;
-            sector.position.y = 100;
-            sector.moveTo(0, 0);
-            this.gameContainer.addChild(sector);
-            this.sectors.push(sector);
-            return sector;
-        }
 
         _.each(this.sectors, (sector) => {
             this.gameContainer.removeChild(sector);
@@ -115,11 +126,15 @@ class Prakoto {
             var initAngle = angle;
             angle += ((pastTime + phase.time)/levelTime) * 2 * Math.PI;
             pastTime += phase.time;
-            initSector(phase.color).arc(0, 0, 70, offsetAngle + initAngle, offsetAngle + angle);
+            var phaseSector = initSector(phase.color, [600, 100]).arc(0, 0, 70, offsetAngle + initAngle, offsetAngle + angle);
+            this.gameContainer.addChild(phaseSector);
+            this.sectors.push(phaseSector);
         }
         var finalAngle = ((this.time + pastTime)/levelTime) * 2 * Math.PI;
 
-        initSector(level.phases[this.phase].color).arc(0, 0, 70, offsetAngle + angle, offsetAngle + finalAngle);
+        var currentSector = initSector(level.phases[this.phase].color, [600, 100]).arc(0, 0, 70, offsetAngle + angle, offsetAngle + finalAngle);
+        this.gameContainer.addChild(currentSector);
+        this.sectors.push(currentSector);
     }
 
     checkEnd() {

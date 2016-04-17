@@ -12,7 +12,7 @@ module.exports = {
             vendor: [
                 'pixi.js',
                 'lodash',
-                'paper'
+                'js-clipper'
             ]},
     output: {
         path: __dirname,
