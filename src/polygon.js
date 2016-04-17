@@ -27,33 +27,33 @@ export default class Polygon {
 
     render() {
         this.graphics.clear();
-        this.graphics.position.x = this.positionX;
-        this.graphics.position.y = this.positionY;
+        this.graphics.position.x = this.positionX - this.options.center[0];
+        this.graphics.position.y = this.positionY - this.options.center[1];
 
         this.graphics.beginFill(this.options.fillColor, this.options.fillAlpha);
         this.graphics.lineStyle(5, colors.secondary);
-        var [centerX, centerY] = this.options.center;
-        this.graphics.moveTo(this.points[0][0] - centerX, this.points[0][1]- centerY);
+        this.graphics.moveTo(this.points[0][0], this.points[0][1]);
         for (var i = 1; i < this.points.length; i++) {
             var [pointX, pointY] = this.points[i];
-            this.graphics.lineTo(pointX - centerX, pointY - centerY);
+            this.graphics.lineTo(pointX, pointY);
         }
     }
 
     moveTo([x, y]) {
         this.positionX = x;
         this.positionY = y;
-        this.graphics.position.x = x;
-        this.graphics.position.y = y;
+        this.graphics.position.x = x - this.options.center[0];
+        this.graphics.position.y = y - this.options.center[0];
     }
 
     subtract(clip) {
+        var [clipPositionX, clipPositionY] = [clip.positionX - clip.positionX % 20, clip.positionY - clip.positionY % 20];
         var absoluteClipPoints = clip.points.map(([x, y]) => {
-            return {X: x + clip.positionX, Y: y + clip.positionY};
+            return {X: x + clipPositionX - clip.options.center[0], Y: y + clipPositionY - clip.options.center[1]};
 
         });
         var absolutePoints = this.points.map(([x, y]) => {
-            return {X: x, Y: y};
+            return {X: x + this.positionX, Y: y + this.positionY};
         });
         var clipper = new ClipperLib.Clipper();
 
@@ -65,7 +65,7 @@ export default class Polygon {
         clipper.Execute(cliptype, result);
 
         var processedResult = result[0].map((point) => {
-            return [point.X, point.Y];
+            return [point.X - this.positionX, point.Y - this.positionY];
         });
         this.points = processedResult;
         this.render();

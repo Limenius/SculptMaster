@@ -13,7 +13,7 @@ window.onload = function ()
 
 class Prakoto {
     constructor() {
-        this.renderer = PIXI.autoDetectRenderer(640,480);
+        this.renderer = PIXI.autoDetectRenderer(800, 600);
         // create an empty container
         this.gameContainer = new PIXI.Container();
         // add the renderer view element to the DOM
@@ -21,7 +21,7 @@ class Prakoto {
         this.tool = new Polygon([0, 0], [[0, 0], [0, 50], [50, 50], [50, 0]], {
             fill : colors.primary,
             fillAlpha : 0.5,
-            center: [0, 0],
+            center: [25, 25],
         });
         this.setUpEvents();
     }
@@ -30,7 +30,6 @@ class Prakoto {
         this.renderer.view.addEventListener('click', event => {
             var x = event.pageX - $(this.renderer.view).offset().left;
             var y = event.pageY - $(this.renderer.view).offset().top;
-            console.log('subtract');
             this.shape.subtract(this.tool);
         });
     }
@@ -54,7 +53,7 @@ class Prakoto {
     onLoad() {
         this.renderer.backgroundColor = colors.background;
 
-        this.shape = new Polygon([0, 0], [[0, 0], [0, 100], [100, 100], [100, 0]]);
+        this.shape = new Polygon([100, 100], [[0, 0], [0, 100], [100, 100], [100, 0]]);
         //var polygon2 = new Polygon([150, 150], [[0, 0], [150, 0], [150, 150], [0, 150]]);
         //polygon.subtract(polygon2);
         this.gameContainer.addChild(this.shape.getGraphics());
