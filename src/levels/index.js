@@ -111,6 +111,41 @@ const levels = [
         goal: [[0, 50], [50, 50], [0, 100], [50, 100], [100, 150], [100, 0], [50, 0]],
         //goal: [[0, 50], [0, 100], [50, 100], [100, 150], [100, 75], [50, 75], [100, 25], [100, 0], [50, 0]],
 
+    },
+    {
+        title: 'Fifth level',
+        initialShape: {
+            points: [[0, 0], [0, 100], [100, 100], [100, 0]],
+            position: [100, 100]
+        },
+        phases: [
+            {
+                time: 4,
+                // half triangle up right
+                tool: [[0, 0], [0, 50], [50, 50]],
+                center: [25, 25],
+                type: 'add',
+                color: colors.highlight,
+            },
+            {
+                time: 4,
+                // half triangle up left
+                tool: [[0, 50], [50, 50], [50, 0]],
+                center: [25, 25],
+                type: 'add',
+                color: colors.secondary,
+            },
+            {
+                time: 4,
+                // square
+                tool: [[0, 0], [0, 50], [50, 50], [50, 0]],
+                center: [25, 25],
+                type: 'subtract',
+                color: colors.tertiary,
+            },
+        ],
+        goal: [[0, 0], [0, 150], [100, 150], [100, 0], [75, 25], [75, 75], [25, 75], [25, 25]],
+
     }
 ]
 
