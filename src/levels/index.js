@@ -2,6 +2,7 @@ import colors from '../colors';
 
 const levels = [
     {
+        title: 'First level',
         background: colors.background,
         initialShape: {
             points: [[0, 0], [0, 100], [100, 100], [100, 0]],
@@ -28,6 +29,7 @@ const levels = [
 
     },
     {
+        title: 'Second level',
         initialShape: {
             points: [[0, 0], [0, 100], [100, 100], [100, 0]],
             position: [100, 100]
