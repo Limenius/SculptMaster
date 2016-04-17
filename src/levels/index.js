@@ -49,7 +49,7 @@ const levels = [
                 time: 5,
                 // triangle up
                 tool: [[50, 0], [0, 50], [100, 50]],
-                center: [25, 25],
+                center: [50, 25],
                 type: 'subtract',
                 color: colors.tertiary,
             },
@@ -76,7 +76,7 @@ const levels = [
                 time: 5,
                 // square
                 tool: [[0, 0], [0, 50], [50, 50], [50, 0]],
-                center: [25, 25],
+                center: [50, 25],
                 type: 'subtract',
                 color: colors.tertiary,
             },
