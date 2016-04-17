@@ -46,7 +46,7 @@ export default class Polygon {
         this.graphics.position.y = y - this.options.center[0];
     }
 
-    subtract(clip) {
+    modify(clip, type) {
         var [clipPositionX, clipPositionY] = [clip.positionX - clip.positionX % 25, clip.positionY - clip.positionY % 25];
         var absoluteClipPoints = clip.points.map(([x, y]) => {
             return {X: x + clipPositionX - clip.options.center[0], Y: y + clipPositionY - clip.options.center[1]};
@@ -59,7 +59,15 @@ export default class Polygon {
 
         clipper.AddPaths([absolutePoints], ClipperLib.PolyType.ptSubject, true);
         clipper.AddPaths([absoluteClipPoints], ClipperLib.PolyType.ptClip, true);
-        var cliptype = ClipperLib.ClipType.ctDifference;
+        var cliptype;
+        switch (type) {
+            case 'subtract':
+                cliptype = ClipperLib.ClipType.ctDifference;
+                break;
+            case 'add':
+                cliptype = ClipperLib.ClipType.ctUnion;
+                break;
+        }
         var polyfilltype = ClipperLib.PolyFillType.pftPositive;
         var result = new ClipperLib.Paths();
         clipper.Execute(cliptype, result);
@@ -73,5 +81,19 @@ export default class Polygon {
 
     getGraphics() {
         return this.graphics;
+    }
+
+    print(points) {
+        var str = '';
+        _.each(points, point => {
+            str = str + '('+point[0] + ', ' + point[1] + ')';
+        });
+        console.log(str);
+    }
+
+    compare(polygon) {
+        return _.isEmpty(_.xorWith(this.points, polygon.points, (a, b) => {
+            return (a[0] == b[0] && a[1] == b[1]);
+        }));
     }
 }
