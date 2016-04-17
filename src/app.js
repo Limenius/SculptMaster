@@ -35,7 +35,6 @@ class Prakoto {
         this.level = 0;
         this.presentLevel();
         this.setUpEvents();
-        this.mouseVisible = false;
     }
 
     setupLevel() {
@@ -68,6 +67,7 @@ class Prakoto {
             fillAlpha : 0.5,
             center: phase.center,
         });
+        this.gameContainer.addChild(this.tool.getGraphics());
     }
 
     setUpEvents() {
@@ -195,10 +195,6 @@ class Prakoto {
     }
 
     renderMouse() {
-        if (!this.mouseVisible) {
-            this.mouseVisible = true;
-            this.gameContainer.addChild(this.tool.getGraphics());
-        }
         var x = this.renderer.plugins.interaction.mouse.global.x;
         var y = this.renderer.plugins.interaction.mouse.global.y;
         x = x - x % 25;
