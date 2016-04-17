@@ -107,7 +107,7 @@ class Prakoto {
     }
 
     renderLevelPresentation() {
-        if (this.time > 5) {
+        if (this.time > 2) {
             this.gameContainer.removeChild(this.presentation.getContainer());
             this.setupLevel();
         }
