@@ -107,7 +107,7 @@ class Prakoto {
     }
 
     renderLevelPresentation() {
-        if (this.time > 2) {
+        if (this.time > 3) {
             this.gameContainer.removeChild(this.presentation.getContainer());
             this.setupLevel();
         }
@@ -175,8 +175,9 @@ class Prakoto {
         if (this.time >= phase.time) {
             if (this.phase == level.phases.length - 1) {
                 console.log(this.shape.compare(this.mold));
-                if (this.shape.compare(this.tool)) {
+                if (this.shape.compare(this.mold)) {
                     this.sound.play('success');
+                    this.level ++;
                 } else {
                     this.sound.play('fail');
                 }
@@ -184,7 +185,6 @@ class Prakoto {
                     this.setupEndGame();
 
                 } else {
-                    this.level ++;
                     this.presentLevel();
                 }
             } else {

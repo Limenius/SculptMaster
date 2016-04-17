@@ -52,7 +52,7 @@ class LevelPresentation {
                     break;
             }
 
-            var text = new PIXI.Text(insideText,{font : '64px Josefin Sans', fill : 0x101010, align : 'center'});
+            var text = new PIXI.Text(insideText,{font : '48px Josefin Sans', fill : 0x101010, align : 'center'});
             text.position.x = x - text.width / 2;
             text.position.y = y - text.height / 2;
 

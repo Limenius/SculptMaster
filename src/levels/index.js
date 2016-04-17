@@ -92,7 +92,7 @@ const levels = [
         },
         phases: [
             {
-                time: 5,
+                time: 8,
                 // half triangle down right
                 tool: [[0, 0], [0, 50], [50, 0]],
                 center: [25, 25],
