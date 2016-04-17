@@ -47,7 +47,7 @@ export default class Polygon {
     }
 
     subtract(clip) {
-        var [clipPositionX, clipPositionY] = [clip.positionX - clip.positionX % 20, clip.positionY - clip.positionY % 20];
+        var [clipPositionX, clipPositionY] = [clip.positionX - clip.positionX % 25, clip.positionY - clip.positionY % 25];
         var absoluteClipPoints = clip.points.map(([x, y]) => {
             return {X: x + clipPositionX - clip.options.center[0], Y: y + clipPositionY - clip.options.center[1]};
 

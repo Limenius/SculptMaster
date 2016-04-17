@@ -19,9 +19,14 @@ class Prakoto {
         // add the renderer view element to the DOM
         document.body.appendChild(this.renderer.view);
         this.tool = new Polygon([0, 0], [[0, 0], [0, 50], [50, 50], [50, 0]], {
-            fill : colors.primary,
+            fillColor : colors.primary,
             fillAlpha : 0.5,
             center: [25, 25],
+        });
+        this.mold = new Polygon([400, 200], [[0, 0], [0, 100], [50, 100], [50, 150], [100, 150], [100, 50], [50, 50], [50, 0]], {
+            fillColor : colors.tertiary,
+            fillAlpha : 1,
+            center: [0, 0],
         });
         this.setUpEvents();
     }
@@ -40,23 +45,39 @@ class Prakoto {
 
     animate() {
         this.renderMouse();
+        this.renderTimer();
         this.renderer.render(this.gameContainer);
         requestAnimationFrame(this.animate.bind(this));
         //allow chain calling
         return this;
     }
 
+    renderTimer() {
+        var now = new Date();
+        this.chrono.text = (Math.floor((now.getTime() - this.initTime.getTime() )/1000));
+    }
+
     renderMouse() {
-        this.tool.moveTo([this.renderer.plugins.interaction.mouse.global.x, this.renderer.plugins.interaction.mouse.global.y]);
+        var x = this.renderer.plugins.interaction.mouse.global.x;
+        var y = this.renderer.plugins.interaction.mouse.global.y;
+        x = x - x % 25;
+        y = y - y % 25;
+        this.tool.moveTo([x, y]);
     }
 
     onLoad() {
         this.renderer.backgroundColor = colors.background;
 
-        this.shape = new Polygon([100, 100], [[0, 0], [0, 100], [100, 100], [100, 0]]);
+        this.shape = new Polygon([100, 100], [[0, 0], [0, 150], [100, 150], [100, 0]]);
         //var polygon2 = new Polygon([150, 150], [[0, 0], [150, 0], [150, 150], [0, 150]]);
         //polygon.subtract(polygon2);
         this.gameContainer.addChild(this.shape.getGraphics());
         this.gameContainer.addChild(this.tool.getGraphics());
+        this.gameContainer.addChild(this.mold.getGraphics());
+        this.initTime = new Date();
+        this.chrono = new PIXI.Text('',{font : '24px Arial', fill : 0xff1010, align : 'right'});
+        this.chrono.x = 400;
+        this.chrono.y = 400;
+        this.gameContainer.addChild(this.chrono);
     }
 }
