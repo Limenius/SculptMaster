@@ -88,11 +88,11 @@ export default class Polygon {
         _.each(points, point => {
             str = str + '('+point[0] + ', ' + point[1] + ')';
         });
-        console.log(str);
+        //console.log(str);
     }
 
     compare(polygon) {
-        console.log(_.xorWith(this.points, polygon.points));
+        //console.log(_.xorWith(this.points, polygon.points));
         return _.isEmpty(_.xorWith(this.points, polygon.points, (a, b) => {
             return (a[0] == b[0] && a[1] == b[1]);
         }));
