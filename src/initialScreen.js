@@ -10,7 +10,7 @@ class InitialScreen {
     }
 
     render() {
-        var text = new PIXI.Text('Sculp Master', {font : '96px Josefin Sans', fill : 0xFFFFFF, align : 'center'});
+        var text = new PIXI.Text('Sculpt Master', {font : '96px Josefin Sans', fill : 0xFFFFFF, align : 'center'});
         //console.log(text);
         text.position.x = 400 - text.width / 2;
         text.position.y = 100;
