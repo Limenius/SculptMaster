@@ -23,7 +23,7 @@ const levels = [
 
     },
     {
-        title: 'Level Two: Tool Shifting',
+        title: 'Level Two: Watch Your Tool',
         initialShape: {
             points: [[0, 0], [0, 25], [100, 25], [100, 0]],
             position: [350, 325],
@@ -50,7 +50,7 @@ const levels = [
 
     },
     {
-        title: 'Level Three: Watch The Sign',
+        title: 'Level Three: Sign Matters',
         initialShape: {
             points: [[0, -50], [0, 50], [100, 50], [100, -50]],
             position: [350, 325],
