@@ -2,7 +2,7 @@ import colors from '../colors';
 
 const levels = [
     {
-        title: 'First level',
+        title: 'Level One: Shift That Shape',
         background: colors.background,
         initialShape: {
             points: [[0, 0], [0, 100], [100, 100], [100, 0]],
@@ -18,29 +18,21 @@ const levels = [
                 type: 'add',
                 color: colors.highlight,
             },
-            {
-                time: 5,
-                // square
-                tool: [[0, 0], [0, 50], [50, 50], [50, 0]],
-                center: [25, 25],
-                type: 'subtract',
-                color: colors.secondary,
-            },
         ],
-        goal: [[0, 0], [0, 100], [50, 100], [50, 150], [100, 150], [100, 50], [50, 50], [50, 0]],
+        goal: [[0, -50], [0, 100], [100, 100], [100, 0], [50, 0], [50, -50]],
 
     },
     {
-        title: 'Second level',
+        title: 'Level Two: Watch out! Shapeshift',
         initialShape: {
-            points: [[0, 0], [0, 100], [100, 100], [100, 0]],
+            points: [[0, 0], [0, 25], [100, 25], [100, 0]],
             position: [100, 100]
         },
         phases: [
             {
                 time: 5,
-                // triangle up
-                tool: [[50, 0], [0, 50], [100, 50]],
+                // square
+                tool: [[0, 0], [0, 50], [50, 50], [50, 0]],
                 center: [50, 25],
                 type: 'add',
                 color: colors.highlight,
@@ -50,11 +42,11 @@ const levels = [
                 // triangle up
                 tool: [[50, 0], [0, 50], [100, 50]],
                 center: [50, 25],
-                type: 'subtract',
+                type: 'add',
                 color: colors.tertiary,
             },
         ],
-        goal: [[0, 50], [0, 150], [50, 100], [100, 150], [100, 50], [50, 0]],
+        goal: [[50, -50], [0, 0], [0, 25], [25, 25], [25, 75], [75, 75], [75, 25], [100, 25], [100, 0]],
 
     },
     {

@@ -92,6 +92,12 @@ export default class Polygon {
     }
 
     compare(polygon) {
+        console.log("Points1");
+        console.log(this.points);
+        console.log("Points2");
+        console.log(polygon.points);
+        console.log("XOR");
+        console.log(_.xorWith(this.points, polygon.points));
         return _.isEmpty(_.xorWith(this.points, polygon.points, (a, b) => {
             return (a[0] == b[0] && a[1] == b[1]);
         }));

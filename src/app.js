@@ -176,8 +176,8 @@ class Prakoto {
             if (this.phase == level.phases.length - 1) {
                 console.log(this.shape.compare(this.mold));
                 if (this.shape.compare(this.mold)) {
-                    this.sound.play('success');
                     this.level ++;
+                    this.sound.play('success');
                 } else {
                     this.sound.play('fail');
                 }
