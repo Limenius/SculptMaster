@@ -211,7 +211,7 @@ const levels = [
                 // weird form
                 tool: [[-75, 0], [-75, 25], [-25, 25], [-25, 75], [0, 75], [0, 25], [75, 25], [75, 0]],
                 center: [50, 25],
-                signCenter: [15, 15],
+                signCenter: [10, 10],
                 type: 'subtract',
                 color: colors.tertiary,
             },
