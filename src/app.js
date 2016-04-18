@@ -153,10 +153,9 @@ class Prakoto {
 
         var pastTime = 0;
         for (var i = 0; i < this.phase; i++) {
-
             var phase = level.phases[i];
             var initAngle = angle;
-            angle += ((pastTime + phase.time)/levelTime) * 2 * Math.PI;
+            angle += ((phase.time)/levelTime) * 2 * Math.PI;
             pastTime += phase.time;
             var phaseSector = initSector(phase.color, [700, 100]).arc(0, 0, 70, offsetAngle + initAngle, offsetAngle + angle);
             this.gameContainer.addChild(phaseSector);
