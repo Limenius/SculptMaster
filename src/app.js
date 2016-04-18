@@ -62,7 +62,7 @@ class Prakoto {
             this.tool.graphics.clear();
             this.gameContainer.removeChild(this.tool);
         }
-        this.tool = new Polygon([700, 300], phase.tool, {
+        this.tool = new Polygon([600, 300], phase.tool, {
             fillColor : phase.color,
             fillAlpha : 0.5,
             center: phase.center,

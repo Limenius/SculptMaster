@@ -50,7 +50,7 @@ const levels = [
 
     },
     {
-        title: 'Level Three: Subtraction Is Out There',
+        title: 'Level Three: Sign Matters',
         initialShape: {
             points: [[0, -50], [0, 50], [100, 50], [100, -50]],
             position: [450, 300],
@@ -86,7 +86,7 @@ const levels = [
         },
         phases: [
             {
-                time: 8,
+                time: 6,
                 // half triangle down right
                 tool: [[0, 0], [0, 50], [50, 0]],
                 center: [25, 25],
@@ -95,7 +95,7 @@ const levels = [
                 color: colors.highlight,
             },
             {
-                time: 5,
+                time: 4,
                 // half triangle down left
                 tool: [[0, 0], [50, 50], [50, 0]],
                 center: [25, 25],
@@ -146,45 +146,7 @@ const levels = [
 
     },
     {
-        title: 'Level Six: Precision',
-        initialShape: {
-            points: [[0, 0], [0, 100], [100, 100], [100, 0]],
-            position: [450, 300],
-        },
-        phases: [
-            {
-                time: 4,
-                // triangle left
-                tool: [[50, 0], [0, 50], [50, 100]],
-                center: [25, 25],
-                signCenter: [35, 50],
-                type: 'add',
-                color: colors.highlight,
-            },
-            {
-                time: 4,
-                // half triangle right
-                tool: [[0, 0], [0, 100], [50, 50]],
-                center: [25, 25],
-                signCenter: [20, 50],
-                type: 'add',
-                color: colors.secondary,
-            },
-            {
-                time: 4,
-                // weird form
-                tool: [[-25, 0], [-25, 25], [25, 25], [25, 75], [50, 75], [50, 25], [125, 25], [125, 0]],
-                center: [50, 25],
-                signCenter: [40, 15],
-                type: 'subtract',
-                color: colors.tertiary,
-            },
-        ],
-        goal: [[-25, -25], [-50, 0], [0, 50], [0, 100], [100, 100], [100, 50], [150, 0], [125, -25], [100, -25], [100, 0], [50, 0], [50, 25], [25, 25], [25, 0], [0, 0], [0, -25]],
-
-    },
-    {
-        title: 'Level Seven: Unuseful Things',
+        title: 'Level Six: Unuseful Things',
         initialShape: {
             points: [[0, 0], [0, 100], [100, 100], [100, 0]],
             position: [450, 300],
@@ -220,6 +182,44 @@ const levels = [
         goal: [[-25, -25], [-25, 25], [0, 25], [0, 100], [100, 100], [100, 25], [125, 25], [75, -25], [75, 0], [25, 0], [25, -25]],
     },
     {
+        title: 'Level Seven: Precision',
+        initialShape: {
+            points: [[0, 0], [0, 100], [100, 100], [100, 0]],
+            position: [450, 300],
+        },
+        phases: [
+            {
+                time: 5,
+                // triangle left
+                tool: [[50, 0], [0, 50], [50, 100]],
+                center: [25, 25],
+                signCenter: [35, 50],
+                type: 'add',
+                color: colors.highlight,
+            },
+            {
+                time: 5,
+                // half triangle right
+                tool: [[0, 0], [0, 100], [50, 50]],
+                center: [25, 25],
+                signCenter: [20, 50],
+                type: 'add',
+                color: colors.secondary,
+            },
+            {
+                time: 4,
+                // weird form
+                tool: [[-25, 0], [-25, 25], [25, 25], [25, 75], [50, 75], [50, 25], [125, 25], [125, 0]],
+                center: [50, 25],
+                signCenter: [40, 15],
+                type: 'subtract',
+                color: colors.tertiary,
+            },
+        ],
+        goal: [[-25, -25], [-50, 0], [0, 50], [0, 100], [100, 100], [100, 50], [150, 0], [125, -25], [100, -25], [100, 0], [50, 0], [50, 25], [25, 25], [25, 0], [0, 0], [0, -25]],
+
+    },
+    {
         title: 'Level Eight: Getting Messy',
         initialShape: {
             points: [[0, 0], [0, 100], [100, 100], [100, 0]],
@@ -242,7 +242,7 @@ const levels = [
                 center: [25, 25],
                 signCenter: [32, 10],
                 type: 'add',
-                color: colors.secondary,
+                color: colors.tertiary,
             },
             {
                 time: 4,
@@ -251,7 +251,7 @@ const levels = [
                 center: [50, 50],
                 signCenter: [13, 13],
                 type: 'add',
-                color: colors.tertiary,
+                color: colors.highlight,
             },
             {
                 time: 4,
@@ -259,7 +259,7 @@ const levels = [
                 tool: [[0, 0], [0, 50], [50, 50], [50, 0]],
                 center: [25, 25],
                 type: 'add',
-                color: colors.secondary,
+                color: colors.tertiary,
             },
         ],
         goal: [[0, 0], [-25, 0], [-25, 25], [0, 25], [0, 75], [-25, 75], [-25, 125], [25, 125], [25, 100], [50, 100], [50, 125], [75, 125], [75, 100], [100, 100], [100, 75], [125, 75], [125, 50], [100, 50], [100, 25], [125, 25], [125, -25], [75, -25], [75, 0], [25, 0], [25, -25], [0, -25]],
@@ -286,7 +286,7 @@ const levels = [
                 tool: [[0, 50], [100, 50], [50, 0]],
                 center: [50, 25],
                 type: 'add',
-                color: colors.secondary,
+                color: colors.tertiary,
             },
         ],
         goal: [[0, 0], [0, 100], [50, 100], [100, 50], [100, 0], [75, 0], [50, -25], [25, 0]],
