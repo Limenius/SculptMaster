@@ -4,6 +4,7 @@ import Polygon from './polygon';
 import colors from './colors';
 import levels from './levels';
 import LevelPresentation from './levelPresentation';
+import InitialScreen from './initialScreen';
 import EndGame from './endGame';
 import {initSector} from './sector';
 import Sound from './sound';
@@ -33,7 +34,7 @@ class Prakoto {
         // add the renderer view element to the DOM
         document.getElementById('game-container').appendChild(this.renderer.view);
         this.level = 0;
-        this.presentLevel();
+        this.setupInitialScreen();
         this.setUpEvents();
     }
 
@@ -98,6 +99,21 @@ class Prakoto {
         this.gameContainer.addChild(this.endGame.getContainer());
     }
 
+    setupInitialScreen() {
+        this.gameContainer.removeChildren();
+        this.initTime = new Date();
+        this.state = 'initialScreen';
+        this.presentation = new InitialScreen();
+        this.gameContainer.addChild(this.presentation.getContainer());
+    }
+
+    renderInitialScreen() {
+        if (this.time > 5) {
+            this.gameContainer.removeChild(this.presentation.getContainer());
+            this.presentLevel();
+        }
+    }
+
     presentLevel() {
         this.gameContainer.removeChildren();
         this.initTime = new Date();
@@ -117,6 +133,9 @@ class Prakoto {
         var now = new Date();
         this.time = (now.getTime() - this.initTime.getTime() )/1000;
         switch (this.state) {
+            case 'initialScreen':
+                this.renderInitialScreen();
+            break;
             case 'levelPresentation':
                 this.renderLevelPresentation();
             break;
