@@ -30,7 +30,7 @@ const levels = [
         },
         phases: [
             {
-                time: 5,
+                time: 4,
                 // square
                 tool: [[0, 0], [0, 50], [50, 50], [50, 0]],
                 center: [25, 25],
@@ -38,7 +38,7 @@ const levels = [
                 color: colors.highlight,
             },
             {
-                time: 5,
+                time: 4,
                 // triangle up
                 tool: [[50, 0], [0, 50], [100, 50]],
                 center: [50, 25],
@@ -57,7 +57,7 @@ const levels = [
         },
         phases: [
             {
-                time: 5,
+                time: 4,
                 // triangle down
                 tool: [[0, 0], [50, 50], [100, 0]],
                 center: [50, 25],
@@ -66,7 +66,7 @@ const levels = [
                 color: colors.highlight,
             },
             {
-                time: 5,
+                time: 4,
                 // square
                 tool: [[0, 0], [0, 50], [50, 50], [50, 0]],
                 center: [25, 25],
@@ -109,7 +109,7 @@ const levels = [
 
     },
     {
-        title: 'Level Five: Warm Up',
+        title: 'Level Five: Warming Up',
         initialShape: {
             points: [[0, 0], [0, 100], [100, 100], [100, 0]],
             position: [350, 325],
@@ -174,7 +174,7 @@ const levels = [
                 // triangle down-left small
                 tool: [[0, 0], [0, 50], [50, 50]],
                 center: [25, 25],
-                signCenter: [12, 25],
+                signCenter: [14, 25],
                 type: 'add',
                 color: colors.tertiary,
             },
@@ -189,16 +189,16 @@ const levels = [
         },
         phases: [
             {
-                time: 5,
+                time: 4,
                 // triangle left
                 tool: [[50, 0], [0, 50], [50, 100]],
                 center: [25, 25],
-                signCenter: [35, 50],
+                signCenter: [10, 45],
                 type: 'add',
                 color: colors.highlight,
             },
             {
-                time: 5,
+                time: 4,
                 // half triangle right
                 tool: [[0, 0], [0, 100], [50, 50]],
                 center: [25, 25],
@@ -265,7 +265,7 @@ const levels = [
         goal: [[0, 0], [-25, 0], [-25, 25], [0, 25], [0, 75], [-25, 75], [-25, 125], [25, 125], [25, 100], [50, 100], [50, 125], [75, 125], [75, 100], [100, 100], [100, 75], [125, 75], [125, 50], [100, 50], [100, 25], [125, 25], [125, -25], [75, -25], [75, 0], [25, 0], [25, -25], [0, -25]],
     },
     {
-        title: 'Level Nine: Speed Matters',
+        title: 'Level Nine: Fast Thinker',
         initialShape: {
             points: [[0, 0], [0, 100], [100, 100], [100, 0]],
             position: [350, 325],

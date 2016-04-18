@@ -35,7 +35,7 @@ class Prakoto {
         document.getElementById('game-container').appendChild(this.renderer.view);
         this.level = 0;
         this.loaded = false;
-        this.lives = 3;
+        this.lives = 5;
         this.setUpEvents();
     }
 
@@ -58,9 +58,9 @@ class Prakoto {
     }
 
     renderLives() {
-        var text = new PIXI.Text('♥'.repeat(this.lives),{font : '48px Josefin Sans', fill : 0xFF0000, align : 'center'});
-        text.position.x = 20;
-        text.position.y = 20;
+        var text = new PIXI.Text('♥'.repeat(this.lives),{font : '36px Josefin Sans', fill : 0xFFFFFF, align : 'center'});
+        text.position.x = 50;
+        text.position.y = 495;
         this.gameContainer.addChild(text);
     }
 
