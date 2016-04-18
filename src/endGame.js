@@ -11,9 +11,9 @@ class EndGame {
     }
 
     render() {
-        var text = new PIXI.Text(this.won ? 'Well done there! :)' : 'Game Over',{font : '48px Josefin Sans', fill : 0xFFFFFF, align : 'center'});
-        text.position.x = 270;
-        text.position.y = 300;
+        var text = new PIXI.Text(this.won ? 'Well done there!' : 'Game Over',{font : '48px Josefin Sans', fill : 0xFFFFFF, align : 'center'});
+        text.position.x = 275;
+        text.position.y = 275;
         this.container.addChild(text);
     }
 
