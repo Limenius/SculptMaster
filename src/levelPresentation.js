@@ -12,7 +12,7 @@ class LevelPresentation {
 
     render() {
         var text = new PIXI.Text(this.level.title,{font : '48px Josefin Sans', fill : 0xFFFFFF, align : 'center'});
-        console.log(text);
+        //console.log(text);
         text.position.x = 400 - text.width / 2;
         text.position.y = 20;
         this.container.addChild(text);
@@ -34,12 +34,17 @@ class LevelPresentation {
             var y = Math.sin(timePortion * 2 * Math.PI + offsetAngle) * radius + 300;
 
             pastTime += phase.time;
+            //console.log(x+"-");
+            //console.log(y+"-");
+            //console.log(radius+"-");
+            //console.log(offsetAngle+"-");
 
             var [centerX, centerY] = phase.center;
+            var center = phase.signCenter ? phase.signCenter : phase.center;
             var tool = new Polygon([x, y], phase.tool, {
                 fillColor : colors.background,
                 fillAlpha : 0.5,
-                center: phase.center,
+                center: center,
             });
 
             var insideText;

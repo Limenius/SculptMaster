@@ -88,6 +88,7 @@ const levels = [
                 // half triangle down right
                 tool: [[0, 0], [0, 50], [50, 0]],
                 center: [25, 25],
+                signCenter: [18, 12],
                 type: 'subtract',
                 color: colors.highlight,
             },
@@ -96,6 +97,7 @@ const levels = [
                 // half triangle down left
                 tool: [[0, 0], [50, 50], [50, 0]],
                 center: [25, 25],
+                signCenter: [34, 12],
                 type: 'add',
                 color: colors.tertiary,
             },
@@ -116,6 +118,7 @@ const levels = [
                 // half triangle up right
                 tool: [[0, 0], [0, 50], [50, 50]],
                 center: [25, 25],
+                signCenter: [16, 30],
                 type: 'add',
                 color: colors.highlight,
             },
@@ -124,6 +127,7 @@ const levels = [
                 // half triangle up left
                 tool: [[0, 50], [50, 50], [50, 0]],
                 center: [25, 25],
+                signCenter: [34, 30],
                 type: 'add',
                 color: colors.secondary,
             },
