@@ -116,7 +116,7 @@ const levels = [
         },
         phases: [
             {
-                time: 5,
+                time: 4,
                 // half triangle up right
                 tool: [[0, 0], [0, 50], [50, 50]],
                 center: [25, 25],
@@ -125,7 +125,7 @@ const levels = [
                 color: colors.highlight,
             },
             {
-                time: 5,
+                time: 4,
                 // half triangle up left
                 tool: [[0, 50], [50, 50], [50, 0]],
                 center: [25, 25],
@@ -134,7 +134,7 @@ const levels = [
                 color: colors.secondary,
             },
             {
-                time: 5,
+                time: 4,
                 // square
                 tool: [[0, 0], [0, 50], [50, 50], [50, 0]],
                 center: [25, 25],
@@ -153,7 +153,7 @@ const levels = [
         },
         phases: [
             {
-                time: 5,
+                time: 4,
                 // triangle left
                 tool: [[50, 0], [0, 50], [50, 100]],
                 center: [25, 25],
@@ -162,7 +162,7 @@ const levels = [
                 color: colors.highlight,
             },
             {
-                time: 5,
+                time: 4,
                 // half triangle right
                 tool: [[0, 0], [0, 100], [50, 50]],
                 center: [25, 25],
@@ -171,7 +171,7 @@ const levels = [
                 color: colors.secondary,
             },
             {
-                time: 5,
+                time: 4,
                 // weird form
                 tool: [[-25, 0], [-25, 25], [25, 25], [25, 75], [50, 75], [50, 25], [125, 25], [125, 0]],
                 center: [50, 25],
@@ -184,14 +184,14 @@ const levels = [
 
     },
     {
-        title: 'Level Seven: Unuseful Tools',
+        title: 'Level Seven: Unuseful Things',
         initialShape: {
             points: [[0, 0], [0, 100], [100, 100], [100, 0]],
             position: [450, 300],
         },
         phases: [
             {
-                time: 5,
+                time: 4,
                 // square
                 tool: [[0, 0], [0, 50], [50, 50], [50, 0]],
                 center: [25, 25],
@@ -199,7 +199,7 @@ const levels = [
                 color: colors.highlight,
             },
             {
-                time: 5,
+                time: 4,
                 // triangle down-left
                 tool: [[0, 0], [0, 75], [75, 75]],
                 center: [25, 25],
@@ -208,7 +208,7 @@ const levels = [
                 color: colors.secondary,
             },
             {
-                time: 5,
+                time: 4,
                 // triangle down-left small
                 tool: [[0, 0], [0, 50], [50, 50]],
                 center: [25, 25],
@@ -227,7 +227,7 @@ const levels = [
         },
         phases: [
             {
-                time: 5,
+                time: 4,
                 // corner up-right
                 tool: [[0, 0], [0, 25], [25, 25], [25, 50], [50, 50], [50, 0]],
                 center: [25, 25],
@@ -236,7 +236,7 @@ const levels = [
                 color: colors.highlight,
             },
             {
-                time: 5,
+                time: 4,
                 // corner down-right
                 tool: [[0, 0], [0, 25], [50, 25], [50, -25], [25, -25], [25, 0]],
                 center: [25, 25],
@@ -245,7 +245,7 @@ const levels = [
                 color: colors.secondary,
             },
             {
-                time: 5,
+                time: 4,
                 // big corner up-left
                 tool: [[0, 0], [0, 75], [25, 75], [25, 25], [75, 25], [75, 0]],
                 center: [50, 50],
@@ -254,7 +254,7 @@ const levels = [
                 color: colors.tertiary,
             },
             {
-                time: 5,
+                time: 4,
                 // square
                 tool: [[0, 0], [0, 50], [50, 50], [50, 0]],
                 center: [25, 25],
