@@ -181,7 +181,7 @@ class Prakoto {
                 } else {
                     this.sound.play('fail');
                 }
-                if (this.level == levels.length - 1) {
+                if (this.level == levels.length) {
                     this.setupEndGame();
 
                 } else {

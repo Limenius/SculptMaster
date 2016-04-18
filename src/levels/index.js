@@ -2,7 +2,7 @@ import colors from '../colors';
 
 const levels = [
     {
-        title: 'Level One: Shift That Shape',
+        title: 'Level One: Shape it',
         background: colors.background,
         initialShape: {
             points: [[0, 0], [0, 100], [100, 100], [100, 0]],
@@ -23,7 +23,7 @@ const levels = [
 
     },
     {
-        title: 'Level Two: Watch out! Shapeshift',
+        title: 'Level Two: Watch your tool',
         initialShape: {
             points: [[0, 0], [0, 25], [100, 25], [100, 0]],
             position: [100, 100]
@@ -33,7 +33,7 @@ const levels = [
                 time: 5,
                 // square
                 tool: [[0, 0], [0, 50], [50, 50], [50, 0]],
-                center: [50, 25],
+                center: [25, 25],
                 type: 'add',
                 color: colors.highlight,
             },
@@ -50,7 +50,7 @@ const levels = [
 
     },
     {
-        title: 'Third level',
+        title: 'Level Three: Subtraction is out there',
         initialShape: {
             points: [[0, 0], [0, 100], [100, 100], [100, 0]],
             position: [100, 100]
@@ -77,7 +77,7 @@ const levels = [
 
     },
     {
-        title: 'Fourth level',
+        title: 'Level Four: Reuse wisely',
         initialShape: {
             points: [[0, 0], [0, 100], [100, 100], [100, 0]],
             position: [100, 100]
@@ -105,7 +105,7 @@ const levels = [
 
     },
     {
-        title: 'Fifth level',
+        title: 'Fifth Level: Warming up',
         initialShape: {
             points: [[0, 0], [0, 100], [100, 100], [100, 0]],
             position: [100, 100]
@@ -136,7 +136,7 @@ const levels = [
                 color: colors.tertiary,
             },
         ],
-        goal: [[0, 0], [0, 150], [100, 150], [100, 0], [75, 25], [75, 75], [25, 75], [25, 25]],
+        goal: [[0, -50], [0, 100], [100, 100], [100, -50], [75, -25], [75, 25], [25, 25], [25, -25]],
 
     }
 ]
