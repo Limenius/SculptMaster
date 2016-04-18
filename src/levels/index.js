@@ -193,7 +193,7 @@ const levels = [
                 // triangle left
                 tool: [[50, 0], [0, 50], [50, 100]],
                 center: [25, 25],
-                signCenter: [10, 45],
+                signCenter: [25, 45],
                 type: 'add',
                 color: colors.highlight,
             },
