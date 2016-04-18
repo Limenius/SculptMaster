@@ -34,7 +34,8 @@ class Prakoto {
         // add the renderer view element to the DOM
         document.getElementById('game-container').appendChild(this.renderer.view);
         this.level = 0;
-        this.setupInitialScreen();
+        this.loaded = false;
+        this.lives = 3;
         this.setUpEvents();
     }
 
@@ -47,12 +48,20 @@ class Prakoto {
             fillAlpha : 1,
             center: [0, 0],
         });
+        this.renderLives();
         this.shape = new Polygon(level.initialShape.position, level.initialShape.points, { fillColor: level.initialShape.color });
         this.phase = 0;
         this.initTime = new Date();
         this.gameContainer.addChildAt(this.shape.getGraphics(), 0);
         this.gameContainer.addChild(this.mold.getGraphics());
         this.setupPhase();
+    }
+
+    renderLives() {
+        var text = new PIXI.Text('♥'.repeat(this.lives),{font : '48px Josefin Sans', fill : 0xFF0000, align : 'center'});
+        text.position.x = 20;
+        text.position.y = 20;
+        this.gameContainer.addChild(text);
     }
 
     setupPhase() {
@@ -85,17 +94,20 @@ class Prakoto {
         var sprites = {};
         var loader = PIXI.loader
         .add('add','/sound/add.mp3')
-            .load((loader, resources) => {
-                this.onLoad();
-                this.sound = new Sound();
-            });
-
+        .add('subtract','/sound/subtract.mp3')
+        .add('change','/sound/change.mp3')
+        .add('fail','/sound/fail.mp3')
+        .add('success','/sound/success.mp3')
+        .load((loader, resources) => {
+            this.onLoad();
+            this.sound = new Sound();
+        })
     }
 
-    setupEndGame() {
+    setupEndGame(won) {
         this.gameContainer.removeChildren();
         this.state = 'endGame';
-        this.endGame = new EndGame();
+        this.endGame = new EndGame(won);
         this.gameContainer.addChild(this.endGame.getContainer());
     }
 
@@ -130,6 +142,10 @@ class Prakoto {
     }
 
     animate() {
+        if (!this.loaded) {
+            requestAnimationFrame(this.animate.bind(this));
+            return this;
+        }
         var now = new Date();
         this.time = (now.getTime() - this.initTime.getTime() )/1000;
         switch (this.state) {
@@ -197,9 +213,14 @@ class Prakoto {
                     this.sound.play('success');
                 } else {
                     this.sound.play('fail');
+                    this.lives --;
+
+                    if (this.lives == 0) {
+                        return this.setupEndGame(false);
+                    }
                 }
                 if (this.level == levels.length) {
-                    this.setupEndGame();
+                    this.setupEndGame(true);
 
                 } else {
                     this.presentLevel();
@@ -220,6 +241,8 @@ class Prakoto {
     }
 
     onLoad() {
+        this.loaded = true;
+        this.setupInitialScreen();
         this.renderer.backgroundColor = colors.background;
 
     }
