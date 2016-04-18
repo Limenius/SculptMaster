@@ -6,7 +6,7 @@ const levels = [
         background: colors.background,
         initialShape: {
             points: [[0, 0], [0, 100], [100, 100], [100, 0]],
-            position: [100, 100],
+            position: [450, 300],
             color: colors.primary
         },
         phases: [
@@ -26,7 +26,7 @@ const levels = [
         title: 'Level Two: Watch your tool',
         initialShape: {
             points: [[0, 0], [0, 25], [100, 25], [100, 0]],
-            position: [100, 100]
+            position: [450, 300],
         },
         phases: [
             {
@@ -52,8 +52,8 @@ const levels = [
     {
         title: 'Level Three: Subtraction is out there',
         initialShape: {
-            points: [[0, 0], [0, 100], [100, 100], [100, 0]],
-            position: [100, 100]
+            points: [[0, -50], [0, 50], [100, 50], [100, -50]],
+            position: [450, 300],
         },
         phases: [
             {
@@ -73,14 +73,14 @@ const levels = [
                 color: colors.tertiary,
             },
         ],
-        goal: [[0, 0], [0, 100], [50, 150], [100, 100], [100, 50], [50, 50], [50, 0]],
+        goal: [[0, -50], [0, 50], [50, 100], [100, 50], [100, 0], [50, 0], [50, -50]],
 
     },
     {
         title: 'Level Four: Reuse wisely',
         initialShape: {
-            points: [[0, 0], [0, 100], [100, 100], [100, 0]],
-            position: [100, 100]
+            points: [[0, -50], [0, 50], [100, 50], [100, -50]],
+            position: [450, 300],
         },
         phases: [
             {
@@ -100,15 +100,15 @@ const levels = [
                 color: colors.tertiary,
             },
         ],
-        goal: [[0, 50], [50, 50], [0, 100], [50, 100], [100, 150], [100, 0], [50, 0]],
+        goal: [[0, 0], [50, 0], [0, 50], [50, 50], [100, 100], [100, -50], [50, -50]],
         //goal: [[0, 50], [0, 100], [50, 100], [100, 150], [100, 75], [50, 75], [100, 25], [100, 0], [50, 0]],
 
     },
     {
-        title: 'Fifth Level: Warming up',
+        title: 'Level Five: Warming up',
         initialShape: {
             points: [[0, 0], [0, 100], [100, 100], [100, 0]],
-            position: [100, 100]
+            position: [450, 300],
         },
         phases: [
             {

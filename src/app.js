@@ -41,7 +41,7 @@ class Prakoto {
         this.state = 'inLevel';
         this.gameContainer.removeChildren();
         var level = levels[this.level];
-        this.mold = new Polygon([400, 200], level.goal, {
+        this.mold = new Polygon([225, 300], level.goal, {
             fillColor : colors.tertiary,
             fillAlpha : 1,
             center: [0, 0],
@@ -62,7 +62,7 @@ class Prakoto {
             this.tool.graphics.clear();
             this.gameContainer.removeChild(this.tool);
         }
-        this.tool = new Polygon([0, 0], phase.tool, {
+        this.tool = new Polygon([700, 300], phase.tool, {
             fillColor : phase.color,
             fillAlpha : 0.5,
             center: phase.center,
@@ -158,13 +158,13 @@ class Prakoto {
             var initAngle = angle;
             angle += ((pastTime + phase.time)/levelTime) * 2 * Math.PI;
             pastTime += phase.time;
-            var phaseSector = initSector(phase.color, [600, 100]).arc(0, 0, 70, offsetAngle + initAngle, offsetAngle + angle);
+            var phaseSector = initSector(phase.color, [700, 100]).arc(0, 0, 70, offsetAngle + initAngle, offsetAngle + angle);
             this.gameContainer.addChild(phaseSector);
             this.sectors.push(phaseSector);
         }
         var finalAngle = ((this.time + pastTime)/levelTime) * 2 * Math.PI;
 
-        var currentSector = initSector(level.phases[this.phase].color, [600, 100]).arc(0, 0, 70, offsetAngle + angle, offsetAngle + finalAngle);
+        var currentSector = initSector(level.phases[this.phase].color, [700, 100]).arc(0, 0, 70, offsetAngle + angle, offsetAngle + finalAngle);
         this.gameContainer.addChild(currentSector);
         this.sectors.push(currentSector);
     }
@@ -174,7 +174,6 @@ class Prakoto {
         var phase = level.phases[this.phase];
         if (this.time >= phase.time) {
             if (this.phase == level.phases.length - 1) {
-                console.log(this.shape.compare(this.mold));
                 if (this.shape.compare(this.mold)) {
                     this.level ++;
                     this.sound.play('success');
