@@ -145,8 +145,82 @@ const levels = [
     //    goal: [[0, -50], [0, 100], [100, 100], [100, -50], [75, -25], [75, 25], [25, 25], [25, -25]],
 
     //},
+    //{
+    //    title: 'Level Six: Precision',
+    //    initialShape: {
+    //        points: [[0, 0], [0, 100], [100, 100], [100, 0]],
+    //        position: [450, 300],
+    //    },
+    //    phases: [
+    //        {
+    //            time: 5,
+    //            // triangle left
+    //            tool: [[50, 0], [0, 50], [50, 100]],
+    //            center: [25, 25],
+    //            signCenter: [35, 50],
+    //            type: 'add',
+    //            color: colors.highlight,
+    //        },
+    //        {
+    //            time: 5,
+    //            // half triangle right
+    //            tool: [[0, 0], [0, 100], [50, 50]],
+    //            center: [25, 25],
+    //            signCenter: [20, 50],
+    //            type: 'add',
+    //            color: colors.secondary,
+    //        },
+    //        {
+    //            time: 5,
+    //            // weird form
+    //            tool: [[-25, 0], [-25, 25], [25, 25], [25, 75], [50, 75], [50, 25], [125, 25], [125, 0]],
+    //            center: [50, 25],
+    //            signCenter: [40, 15],
+    //            type: 'subtract',
+    //            color: colors.tertiary,
+    //        },
+    //    ],
+    //    goal: [[-25, -25], [-50, 0], [0, 50], [0, 100], [100, 100], [100, 50], [150, 0], [125, -25], [100, -25], [100, 0], [50, 0], [50, 25], [25, 25], [25, 0], [0, 0], [0, -25]],
+
+    //},
+    //{
+    //    title: 'Level Seven: Unuseful tools',
+    //    initialShape: {
+    //        points: [[0, 0], [0, 100], [100, 100], [100, 0]],
+    //        position: [450, 300],
+    //    },
+    //    phases: [
+    //        {
+    //            time: 5,
+    //            // square
+    //            tool: [[0, 0], [0, 50], [50, 50], [50, 0]],
+    //            center: [25, 25],
+    //            type: 'add',
+    //            color: colors.highlight,
+    //        },
+    //        {
+    //            time: 5,
+    //            // triangle down-left
+    //            tool: [[0, 0], [0, 75], [75, 75]],
+    //            center: [25, 25],
+    //            signCenter: [20, 50],
+    //            type: 'add',
+    //            color: colors.secondary,
+    //        },
+    //        {
+    //            time: 5,
+    //            // triangle down-left small
+    //            tool: [[0, 0], [0, 50], [50, 50]],
+    //            center: [25, 25],
+    //            signCenter: [12, 25],
+    //            type: 'add',
+    //            color: colors.tertiary,
+    //        },
+    //    ],
+    //    goal: [[-25, -25], [-25, 25], [0, 25], [0, 100], [100, 100], [100, 25], [125, 25], [75, -25], [75, 0], [25, 0], [25, -25]],
+    //},
     {
-        title: 'Level Six: Precision',
+        title: 'Level Eight: Getting messy',
         initialShape: {
             points: [[0, 0], [0, 100], [100, 100], [100, 0]],
             position: [450, 300],
@@ -154,35 +228,42 @@ const levels = [
         phases: [
             {
                 time: 5,
-                // triangle left
-                tool: [[50, 0], [0, 50], [50, 100]],
+                // corner up-right
+                tool: [[0, 0], [0, 25], [25, 25], [25, 50], [50, 50], [50, 0]],
                 center: [25, 25],
-                signCenter: [35, 50],
+                signCenter: [32, 12],
                 type: 'add',
                 color: colors.highlight,
             },
             {
                 time: 5,
-                // half triangle right
-                tool: [[0, 0], [0, 100], [50, 50]],
+                // corner down-right
+                tool: [[0, 0], [0, 25], [50, 25], [50, -25], [25, -25], [25, 0]],
                 center: [25, 25],
-                signCenter: [20, 50],
+                signCenter: [32, 10],
                 type: 'add',
                 color: colors.secondary,
             },
             {
                 time: 5,
-                // weird form
-                tool: [[-25, 0], [-25, 25], [25, 25], [25, 75], [50, 75], [50, 25], [125, 25], [125, 0]],
-                center: [50, 25],
-                signCenter: [40, 15],
-                type: 'subtract',
+                // big corner up-left
+                tool: [[0, 0], [0, 75], [25, 75], [25, 25], [75, 25], [75, 0]],
+                center: [50, 50],
+                signCenter: [13, 13],
+                type: 'add',
                 color: colors.tertiary,
             },
+            {
+                time: 5,
+                // square
+                tool: [[0, 0], [0, 50], [50, 50], [50, 0]],
+                center: [25, 25],
+                type: 'add',
+                color: colors.secondary,
+            },
         ],
-        goal: [[-25, -25], [-50, 0], [0, 50], [0, 100], [100, 100], [100, 50], [150, 0], [125, -25], [100, -25], [100, 0], [50, 0], [50, 25], [25, 25], [25, 0], [0, 0], [0, -25]],
-
-    },
+        goal: [[0, 0], [-25, 0], [-25, 25], [0, 25], [0, 75], [-25, 75], [-25, 125], [25, 125], [25, 100], [50, 100], [50, 125], [75, 125], [75, 100], [100, 100], [100, 75], [125, 75], [125, 50], [100, 50], [100, 25], [125, 25], [125, -25], [75, -25], [75, 0], [25, 0], [25, -25], [0, -25]],
+    }
 ]
 
 export default levels;
