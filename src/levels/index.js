@@ -2,7 +2,7 @@ import colors from '../colors';
 
 const levels = [
     //{
-    //    title: 'Level One: Shape it',
+    //    title: 'Level One: Shape It',
     //    background: colors.background,
     //    initialShape: {
     //        points: [[0, 0], [0, 100], [100, 100], [100, 0]],
@@ -23,7 +23,7 @@ const levels = [
 
     //},
     //{
-    //    title: 'Level Two: Watch your tool',
+    //    title: 'Level Two: Watch Your Tool',
     //    initialShape: {
     //        points: [[0, 0], [0, 25], [100, 25], [100, 0]],
     //        position: [450, 300],
@@ -50,7 +50,7 @@ const levels = [
 
     //},
     //{
-    //    title: 'Level Three: Subtraction is out there',
+    //    title: 'Level Three: Subtraction Is Out There',
     //    initialShape: {
     //        points: [[0, -50], [0, 50], [100, 50], [100, -50]],
     //        position: [450, 300],
@@ -79,7 +79,7 @@ const levels = [
 
     //},
     //{
-    //    title: 'Level Four: Reuse wisely',
+    //    title: 'Level Four: Reuse Wisely',
     //    initialShape: {
     //        points: [[0, -50], [0, 50], [100, 50], [100, -50]],
     //        position: [450, 300],
@@ -109,7 +109,7 @@ const levels = [
 
     //},
     //{
-    //    title: 'Level Five: Warming up',
+    //    title: 'Level Five: Warming Up',
     //    initialShape: {
     //        points: [[0, 0], [0, 100], [100, 100], [100, 0]],
     //        position: [450, 300],
@@ -184,7 +184,7 @@ const levels = [
 
     //},
     //{
-    //    title: 'Level Seven: Unuseful tools',
+    //    title: 'Level Seven: Unuseful Tools',
     //    initialShape: {
     //        points: [[0, 0], [0, 100], [100, 100], [100, 0]],
     //        position: [450, 300],
@@ -219,50 +219,77 @@ const levels = [
     //    ],
     //    goal: [[-25, -25], [-25, 25], [0, 25], [0, 100], [100, 100], [100, 25], [125, 25], [75, -25], [75, 0], [25, 0], [25, -25]],
     //},
+    //{
+    //    title: 'Level Eight: Getting Messy',
+    //    initialShape: {
+    //        points: [[0, 0], [0, 100], [100, 100], [100, 0]],
+    //        position: [450, 300],
+    //    },
+    //    phases: [
+    //        {
+    //            time: 5,
+    //            // corner up-right
+    //            tool: [[0, 0], [0, 25], [25, 25], [25, 50], [50, 50], [50, 0]],
+    //            center: [25, 25],
+    //            signCenter: [32, 12],
+    //            type: 'add',
+    //            color: colors.highlight,
+    //        },
+    //        {
+    //            time: 5,
+    //            // corner down-right
+    //            tool: [[0, 0], [0, 25], [50, 25], [50, -25], [25, -25], [25, 0]],
+    //            center: [25, 25],
+    //            signCenter: [32, 10],
+    //            type: 'add',
+    //            color: colors.secondary,
+    //        },
+    //        {
+    //            time: 5,
+    //            // big corner up-left
+    //            tool: [[0, 0], [0, 75], [25, 75], [25, 25], [75, 25], [75, 0]],
+    //            center: [50, 50],
+    //            signCenter: [13, 13],
+    //            type: 'add',
+    //            color: colors.tertiary,
+    //        },
+    //        {
+    //            time: 5,
+    //            // square
+    //            tool: [[0, 0], [0, 50], [50, 50], [50, 0]],
+    //            center: [25, 25],
+    //            type: 'add',
+    //            color: colors.secondary,
+    //        },
+    //    ],
+    //    goal: [[0, 0], [-25, 0], [-25, 25], [0, 25], [0, 75], [-25, 75], [-25, 125], [25, 125], [25, 100], [50, 100], [50, 125], [75, 125], [75, 100], [100, 100], [100, 75], [125, 75], [125, 50], [100, 50], [100, 25], [125, 25], [125, -25], [75, -25], [75, 0], [25, 0], [25, -25], [0, -25]],
+    //},
     {
-        title: 'Level Eight: Getting messy',
+        title: 'Level Nine: Speed Matters',
         initialShape: {
             points: [[0, 0], [0, 100], [100, 100], [100, 0]],
             position: [450, 300],
         },
         phases: [
             {
-                time: 5,
-                // corner up-right
-                tool: [[0, 0], [0, 25], [25, 25], [25, 50], [50, 50], [50, 0]],
-                center: [25, 25],
-                signCenter: [32, 12],
-                type: 'add',
+                time: 2,
+                // big triangle down-right
+                tool: [[0, 100], [100, 100], [100, 0]],
+                center: [50, 50],
+                signCenter: [70, 60],
+                type: 'subtract',
                 color: colors.highlight,
             },
             {
-                time: 5,
-                // corner down-right
-                tool: [[0, 0], [0, 25], [50, 25], [50, -25], [25, -25], [25, 0]],
-                center: [25, 25],
-                signCenter: [32, 10],
-                type: 'add',
-                color: colors.secondary,
-            },
-            {
-                time: 5,
-                // big corner up-left
-                tool: [[0, 0], [0, 75], [25, 75], [25, 25], [75, 25], [75, 0]],
-                center: [50, 50],
-                signCenter: [13, 13],
-                type: 'add',
-                color: colors.tertiary,
-            },
-            {
-                time: 5,
-                // square
-                tool: [[0, 0], [0, 50], [50, 50], [50, 0]],
-                center: [25, 25],
+                time: 2,
+                // triangle up
+                tool: [[0, 50], [100, 50], [50, 0]],
+                center: [50, 25],
                 type: 'add',
                 color: colors.secondary,
             },
         ],
-        goal: [[0, 0], [-25, 0], [-25, 25], [0, 25], [0, 75], [-25, 75], [-25, 125], [25, 125], [25, 100], [50, 100], [50, 125], [75, 125], [75, 100], [100, 100], [100, 75], [125, 75], [125, 50], [100, 50], [100, 25], [125, 25], [125, -25], [75, -25], [75, 0], [25, 0], [25, -25], [0, -25]],
+        goal: [[0, 0], [0, 100], [50, 100], [100, 50], [100, 0], [75, 0], [50, -25], [25, 0]],
     }
 ]
 
