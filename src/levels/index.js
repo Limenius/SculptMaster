@@ -6,7 +6,7 @@ const levels = [
         background: colors.background,
         initialShape: {
             points: [[0, 0], [0, 100], [100, 100], [100, 0]],
-            position: [450, 300],
+            position: [350, 325],
             color: colors.primary
         },
         phases: [
@@ -26,7 +26,7 @@ const levels = [
         title: 'Level Two: Watch Your Tool',
         initialShape: {
             points: [[0, 0], [0, 25], [100, 25], [100, 0]],
-            position: [450, 300],
+            position: [350, 325],
         },
         phases: [
             {
@@ -53,7 +53,7 @@ const levels = [
         title: 'Level Three: Sign Matters',
         initialShape: {
             points: [[0, -50], [0, 50], [100, 50], [100, -50]],
-            position: [450, 300],
+            position: [350, 325],
         },
         phases: [
             {
@@ -82,7 +82,7 @@ const levels = [
         title: 'Level Four: Reuse Wisely',
         initialShape: {
             points: [[0, -50], [0, 50], [100, 50], [100, -50]],
-            position: [450, 300],
+            position: [350, 325],
         },
         phases: [
             {
@@ -112,7 +112,7 @@ const levels = [
         title: 'Level Five: Warming Up',
         initialShape: {
             points: [[0, 0], [0, 100], [100, 100], [100, 0]],
-            position: [450, 300],
+            position: [350, 325],
         },
         phases: [
             {
@@ -149,7 +149,7 @@ const levels = [
         title: 'Level Six: Unuseful Things',
         initialShape: {
             points: [[0, 0], [0, 100], [100, 100], [100, 0]],
-            position: [450, 300],
+            position: [350, 325],
         },
         phases: [
             {
@@ -185,7 +185,7 @@ const levels = [
         title: 'Level Seven: Precision',
         initialShape: {
             points: [[0, 0], [0, 100], [100, 100], [100, 0]],
-            position: [450, 300],
+            position: [350, 325],
         },
         phases: [
             {
@@ -209,9 +209,9 @@ const levels = [
             {
                 time: 4,
                 // weird form
-                tool: [[-25, 0], [-25, 25], [25, 25], [25, 75], [50, 75], [50, 25], [125, 25], [125, 0]],
+                tool: [[-75, 0], [-75, 25], [-25, 25], [-25, 75], [0, 75], [0, 25], [75, 25], [75, 0]],
                 center: [50, 25],
-                signCenter: [40, 15],
+                signCenter: [15, 15],
                 type: 'subtract',
                 color: colors.tertiary,
             },
@@ -223,7 +223,7 @@ const levels = [
         title: 'Level Eight: Getting Messy',
         initialShape: {
             points: [[0, 0], [0, 100], [100, 100], [100, 0]],
-            position: [450, 300],
+            position: [350, 325],
         },
         phases: [
             {
@@ -268,7 +268,7 @@ const levels = [
         title: 'Level Nine: Speed Matters',
         initialShape: {
             points: [[0, 0], [0, 100], [100, 100], [100, 0]],
-            position: [450, 300],
+            position: [350, 325],
         },
         phases: [
             {
@@ -295,7 +295,7 @@ const levels = [
         title: 'Level Ten: Shapeshift Master',
         initialShape: {
             points: [[0, 0], [0, 100], [100, 100], [100, 0]],
-            position: [450, 300],
+            position: [350, 325],
         },
         phases: [
             {

@@ -43,7 +43,7 @@ class Prakoto {
         this.state = 'inLevel';
         this.gameContainer.removeChildren();
         var level = levels[this.level];
-        this.mold = new Polygon([225, 300], level.goal, {
+        this.mold = new Polygon([75, 100], level.goal, {
             fillColor : colors.tertiary,
             fillAlpha : 1,
             center: [0, 0],
