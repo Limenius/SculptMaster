@@ -34,10 +34,11 @@ class LevelPresentation {
             var y = Math.sin(timePortion * 2 * Math.PI + offsetAngle) * radius + 300;
 
             pastTime += phase.time;
-            //console.log(x+"-");
-            //console.log(y+"-");
-            //console.log(radius+"-");
-            //console.log(offsetAngle+"-");
+
+            if (this.level.phases.length == 1) {
+                var x = 400;
+                var y = 300;
+            }
 
             var [centerX, centerY] = phase.center;
             var center = phase.signCenter ? phase.signCenter : phase.center;
