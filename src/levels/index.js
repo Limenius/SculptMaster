@@ -23,7 +23,7 @@ const levels = [
 
     },
     {
-        title: 'Level Two: Watch Your Tool',
+        title: 'Level Two: Tool Shift',
         initialShape: {
             points: [[0, 0], [0, 25], [100, 25], [100, 0]],
             position: [350, 325],
@@ -109,7 +109,7 @@ const levels = [
 
     },
     {
-        title: 'Level Five: Warming Up',
+        title: 'Level Five: Warm Up',
         initialShape: {
             points: [[0, 0], [0, 100], [100, 100], [100, 0]],
             position: [350, 325],
